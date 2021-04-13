@@ -32,7 +32,7 @@ class DBManager {
         const { code, message, reason } = error;
         logger.error(
           `Failed to connect to MongoDB. ${code} : ${message}. Reason: ${reason}`,
-          error.stack,
+          error.stack
         );
         await connection.close();
         return null;
@@ -44,6 +44,7 @@ class DBManager {
 
   registerCloseConnection() {
     process.on('SIGINT', () => {
+      this.db = null;
       MongoClient.close();
       logger.info('Closing mongodb connection');
     });

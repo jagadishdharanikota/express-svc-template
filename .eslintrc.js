@@ -3,18 +3,27 @@ module.exports = {
     commonjs: true,
     es6: true,
     node: true,
-    'jest/globals': true,
   },
-  extends: ['airbnb-base'],
+  extends: ['airbnb-base', 'plugin:jest/recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
+    jest: true,
   },
   parserOptions: {
     ecmaVersion: 2018,
   },
   rules: {
-    /* 'comma-dangle': ['error', 'never'], */
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'never',
+      },
+    ],
     'linebreak-style': 0,
     'no-underscore-dangle': 'off',
   },

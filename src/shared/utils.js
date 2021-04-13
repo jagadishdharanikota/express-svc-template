@@ -16,9 +16,7 @@ function getProcessArgument(argName) {
   return '';
 }
 
-function cliQuessionarie(questions) {
-  questions = ['what is your name?', 'what is your qualification?'];
-
+function cliQuessionarie(questions = ['what is your name?', 'what is your qualification?']) {
   const answers = [];
   const askQuestion = (index) => {
     process.output(`\n${questions[index]}`);
@@ -41,13 +39,14 @@ function cliQuessionarie(questions) {
   askQuestion(0);
 }
 
-function cliQuessionarieCompact(questions, done) {
+function cliQuessionarieCompact(
+  questions = ['what is your name?', 'what is your qualification?'],
+  done
+) {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
-
-  questions = ['what is your name?', 'what is your qualification?'];
 
   const collectAnswers = (allQuestions, onDone) => {
     const answers = [];

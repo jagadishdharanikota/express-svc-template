@@ -14,8 +14,15 @@
     "test:debug:l": "cross-env NODE_ENV=test node --inspect-brk node_modules/.bin/jest --runInBand",
     "prod": "pm2 start ecosystem.config.js",
     "pm2": "pm2",
-    "eslint": "eslint ./src/**/**.js",
-    "prettier": "prettier --write src/**/*.js"
+    "eslint": "eslint ./src/**/**.js --max-warnings 5",
+    "format": "prettier-eslint --eslint-config-path ./.eslintrc.js --write '**/*.js'",
+    "prettier": "prettier --write ./src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier && npm run eslint",
+      "pre-push": "npm test"
+    }
   },
   "author": "Jagadish Dharanikota",
   "license": "ISC",
@@ -38,8 +45,12 @@
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jest": "^24.3.5",
+    "husky": "^6.0.0",
     "jest": "^26.0.1",
     "prettier": "^2.0.5",
+    "prettier-eslint": "^12.0.0",
+    "prettier-eslint-cli": "^5.0.1",
     "supertest": "^4.0.2"
   },
   "engines": {

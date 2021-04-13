@@ -75,7 +75,7 @@ app.get('/ping', (req, res) => {
 });
 
 /*
-  Ideally we don't create REST services like this to retrieve sever info. Just for testing purpose. 
+  Ideally we don't create REST services like this to retrieve sever info. Just for testing purpose.
 */
 app.get('/server-info', (req, res) => {
   res.header({ 'Content-Type': 'text/html' }).send(
@@ -91,7 +91,7 @@ app.get('/server-info', (req, res) => {
   <li>Free Memory   : ${os.freemem()}</li>
 </ul>
 <div>-----------------------------------------------------------------------</div>
-`,
+`
   );
 });
 
@@ -115,7 +115,7 @@ if (process.env.NODE_ENV !== 'test') {
   */
   app.listen(PORT, () => {
     logger.info(
-      `Service is listening on port: ${PORT}. Service is accessible on http://localhost:${PORT}/`,
+      `Service is listening on port: ${PORT}. Service is accessible on http://localhost:${PORT}/`
     );
 
     // Reference: https://pm2.keymetrics.io/docs/usage/signals-clean-restart/
@@ -128,7 +128,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 if (typeof processEventsHandler === 'function') {
-  logger.info("Registered process event handlers");
+  logger.info('Registered process event handlers');
   processEventsHandler();
 }
 

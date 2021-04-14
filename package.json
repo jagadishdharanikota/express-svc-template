@@ -21,7 +21,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo \"[Husky]: Executing pre-commit commands\" && npm run prettier && npm run eslint",
+      "pre-commit": "npm run prettier && npm run eslint",
       "pre-push": "npm test"
     }
   },

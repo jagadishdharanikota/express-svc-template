@@ -16,7 +16,8 @@
     "pm2": "pm2",
     "eslint": "eslint ./src/**/**.js --max-warnings 5",
     "format": "prettier-eslint --eslint-config-path ./.eslintrc.js --write '**/*.js'",
-    "prettier": "prettier --write ./src"
+    "prettier": "prettier --write ./src",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {

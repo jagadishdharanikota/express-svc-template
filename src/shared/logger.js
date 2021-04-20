@@ -1,4 +1,4 @@
-const Winston = require('winston');
+import Winston from 'winston';
 
 /* eslint new-cap: "off" */
 const logger = new Winston.createLogger({
@@ -10,4 +10,4 @@ const logger = new Winston.createLogger({
   ],
 });
 
-module.exports = logger;
+export default logger;

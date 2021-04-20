@@ -1,6 +1,6 @@
 /* Utility method file */
 
-const readline = require('readline');
+import readline from 'readline';
 
 /**
  *
@@ -66,8 +66,4 @@ function cliQuessionarieCompact(
   collectAnswers(questions, done);
 }
 
-module.exports = {
-  getProcessArgument,
-  cliQuessionarie,
-  cliQuessionarieCompact,
-};
+export { getProcessArgument, cliQuessionarie, cliQuessionarieCompact };

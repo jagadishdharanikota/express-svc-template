@@ -5,6 +5,20 @@
  * Author: Jagadish Dharanikota
  ****************************************************************** */
 
+import os from 'os';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import compression from 'compression';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import logger from './shared/logger.js';
+import requestLogger from './shared/request-logger.js';
+import { CustomError, handleError } from './helpers/error.js';
+import processEventsHandler from './helpers/process-events-handler.js';
+import routes from './routes/index.js';
+
+/*
 const os = require('os');
 const express = require('express');
 const cookieParser = require('cookie-parser');
@@ -17,6 +31,7 @@ const requestLogger = require('./shared/request-logger');
 const { CustomError, handleError } = require('./helpers/error');
 const processEventsHandler = require('./helpers/process-events-handler');
 const routes = require('./routes');
+*/
 
 const PORT = process.env.PORT || 8000;
 const app = express();

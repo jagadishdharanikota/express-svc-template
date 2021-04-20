@@ -1,5 +1,5 @@
-const morgan = require('morgan');
-const logger = require('./logger');
+import morgan from 'morgan';
+import logger from './logger.js';
 
 const format = 'dev';
 const options = {
@@ -8,4 +8,4 @@ const options = {
   },
 };
 
-module.exports = morgan(format, options);
+export default morgan(format, options);

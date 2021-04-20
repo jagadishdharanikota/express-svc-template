@@ -15,7 +15,4 @@ const handleError = (err, res) => {
   });
 };
 
-module.exports = {
-  CustomError,
-  handleError,
-};
+export { CustomError, handleError };

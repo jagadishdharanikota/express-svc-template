@@ -1,4 +1,4 @@
-const logger = require('../shared/logger');
+import logger from '../shared/logger.js';
 
 function processEventsHandler() {
   // Handling process termination
@@ -23,4 +23,4 @@ function processEventsHandler() {
   });
 }
 
-module.exports = processEventsHandler;
+export default processEventsHandler;

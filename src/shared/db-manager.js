@@ -1,6 +1,6 @@
-const { MongoClient } = require('mongodb');
-const promise = require('promise');
-const logger = require('./logger');
+import { MongoClient } from 'mongodb';
+import promise from 'promise';
+import logger from './logger';
 
 class DBManager {
   constructor() {
@@ -101,4 +101,4 @@ process.on('SIGINT', () => {
   logger.info('Closing mongodb connection');
 });
 
-module.exports = new DBManager();
+export default new DBManager();

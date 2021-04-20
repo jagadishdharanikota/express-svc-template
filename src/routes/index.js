@@ -1,9 +1,9 @@
-const express = require('express');
-const sampleRoutes = require('./sample-routes');
+import express from 'express';
+import sampleRoutes from './sample-routes.js';
 
 const router = express.Router();
 
-module.exports = () => {
+export default () => {
   router.use('/', sampleRoutes());
   return router;
 };

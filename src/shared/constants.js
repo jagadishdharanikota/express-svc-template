@@ -4,4 +4,4 @@ const MONGO_COLLECTIONS = {
   VIEWS: 'views',
 };
 
-module.exports = { MONGO_COLLECTIONS };
+export { MONGO_COLLECTIONS };

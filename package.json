@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Express service template project",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "start": "node --trace-sync-io src/server.js",
+    "start": "node src/server.js",
     "dev": "node -r dotenv/config --trace-sync-io src/server.js",
     "debug:express": "DEBUG=express:* node -r dotenv/config src/server.js",
     "dev:pm2": "pm2 start ecosystem.config.js --env development --watch",
@@ -17,13 +18,9 @@
     "eslint": "eslint ./src/**/**.js --max-warnings 5",
     "format": "prettier-eslint --eslint-config-path ./.eslintrc.js --write '**/*.js'",
     "prettier": "prettier --write ./src",
-    "prepare": "husky install"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettier && npm run eslint",
-      "pre-push": "npm test"
-    }
+    "prepare": "husky install",
+    "pre-commit": "npm run prettier && npm run eslint",
+    "pre-push": "npm test"
   },
   "author": "Jagadish Dharanikota",
   "license": "ISC",

@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 
 const router = express.Router();
-module.exports = () => {
+export default () => {
   router.get('/sample', async (req, res) => {
     res.status(200).json({
       name: 'sample',

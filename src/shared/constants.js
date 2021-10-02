@@ -4,4 +4,6 @@ const MONGO_COLLECTIONS = {
   VIEWS: 'views',
 };
 
-export { MONGO_COLLECTIONS };
+const INTERNAL_SERVER_ERROR = 'Internal server error';
+
+export default { INTERNAL_SERVER_ERROR, MONGO_COLLECTIONS };

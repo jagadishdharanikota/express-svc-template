@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
+
 const processArgs = process.argv;
-console.info(`pm2 starting with arguments:`, processArgs);
+console.info('pm2 starting with arguments:', processArgs);
 const isDebuggableDevEnvironment = processArgs.findIndex((item) => item === 'development_debug');
 const isDevEnvironment = processArgs.findIndex((item) => item === 'development');
 let mode;
@@ -34,9 +36,10 @@ const Color = {
 };
 
 if (isDebuggableDevEnvironment > 0) {
-  const seperatorLine = ' ' + '-'.repeat(156);
-  const InfoMsg =
-    " | Starting the service in debug enabled mode. Attach to the process for debugging by using 'Attach by Process ID' vscode configuration to access the server. |";
+  const seperatorLine = ` ${'-'.repeat(156)}`;
+  const InfoMsg = ` | Starting the service in debug enabled mode. Attach to the process for debugging by using 'Attach by Process ID' 
+  vscode configuration to access the server. |`;
+
   console.info(Color.BgRed, seperatorLine);
   console.info(InfoMsg);
   console.info(Color.BgRed, seperatorLine, Color.Reset);
@@ -48,7 +51,8 @@ if (isDebuggableDevEnvironment > 0) {
 } else {
   mode = 'cluster';
   // Ref: https://www.udemy.com/course/advanced-node-for-developers/learn/lecture/9646774#overview
-  instances = 0; // pm2 will decide how many instances to spun off based on the logical cores of the machine
+  // pm2 will decide how many instances to spun off based on the logical cores of the machine
+  instances = 0;
 }
 
 module.exports = {
@@ -59,13 +63,13 @@ module.exports = {
 
       // Option for debugging the node process running in pm2 with vscode attach process launch configuration
       // Use either this option or the once specified in env object NODE_OPTIONS
-      // Important Note :  While debugging it is important to run the pm2 in "fork" mode. With cluster mode we cannot find the process to attach for debugging
+      // Important Note: While debugging it is important to run the pm2 in "fork" mode. With cluster mode we cannot find the process to attach for debugging
       // With this option you cannot access routes unless debugger is attached and will be applicable for server ran in all mode
-      //node_args: ["--inspect-brk"],
+      // node_args: ["--inspect-brk"],
 
       // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
       args: 'one two',
-      instances: instances,
+      instances,
       autorestart: true,
       watch: false,
       max_memory_restart: '1G',

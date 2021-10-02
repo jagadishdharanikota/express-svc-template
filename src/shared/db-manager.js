@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 import promise from 'promise';
-import logger from './logger';
+import logger from './logger.js';
 
 class DBManager {
   constructor() {

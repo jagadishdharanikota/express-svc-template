@@ -33,7 +33,7 @@ function cliQuessionarie(questions = ['what is your name?', 'what is your qualif
   });
 
   process.on('exit', () => {
-    console.log('ThankYou for answering');
+    console.log('Thank you for answering');
   });
 
   askQuestion(0);

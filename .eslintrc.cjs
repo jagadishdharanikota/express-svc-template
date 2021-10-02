@@ -1,10 +1,9 @@
 module.exports = {
   env: {
-    commonjs: true,
     es6: true,
     node: true,
   },
-  extends: ['airbnb-base', 'plugin:jest/recommended'],
+  extends: ['airbnb-base', 'plugin:jest/recommended', 'prettier'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -14,14 +13,12 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
-    'comma-dangle': [
+    'import/extensions': [
       'error',
+      'ignorePackages',
       {
-        arrays: 'always-multiline',
-        objects: 'always-multiline',
-        imports: 'always-multiline',
-        exports: 'always-multiline',
-        functions: 'never',
+        js: 'always',
+        ts: 'always',
       },
     ],
     'linebreak-style': 0,

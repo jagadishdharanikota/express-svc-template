@@ -1,4 +1,6 @@
-const logger = require('../../src/shared/logger');
+import { jest } from '@jest/globals';
+import logger from '../../src/shared/logger.js';
+import processEventsHandler from '../../src/helpers/process-events-handler.js';
 
 describe('Unit testing the server', () => {
   test('catches uncaughtException rejections', () => {
@@ -11,7 +13,6 @@ describe('Unit testing the server', () => {
     });
     jest.spyOn(logger, 'error').mockReturnValueOnce();
 
-    const processEventsHandler = require('../../src/helpers/process-events-handler');
     processEventsHandler();
     expect(process.on).toBeCalledWith('uncaughtException', expect.any(Function));
     expect(logger.error).toHaveBeenCalledWith(`Uncaught exception occured: ${error}`);

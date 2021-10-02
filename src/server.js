@@ -12,26 +12,12 @@ import cors from 'cors';
 import compression from 'compression';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import constants from './shared/constants.js';
 import logger from './shared/logger.js';
 import requestLogger from './shared/request-logger.js';
 import { CustomError, handleError } from './helpers/error.js';
 import processEventsHandler from './helpers/process-events-handler.js';
 import routes from './routes/index.js';
-
-/*
-const os = require('os');
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const compression = require('compression');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
-const logger = require('./shared/logger');
-const requestLogger = require('./shared/request-logger');
-const { CustomError, handleError } = require('./helpers/error');
-const processEventsHandler = require('./helpers/process-events-handler');
-const routes = require('./routes');
-*/
 
 const PORT = process.env.PORT || 8000;
 const app = express();
@@ -51,16 +37,6 @@ app.set('trust proxy', 1);
 
 // Middleware to enable CORS requests
 app.use(cors());
-
-/*
-// Replaced the custom code with cors package
-// NEW - Add CORS headers - see https://enable-cors.org/server_expressjs.html
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-*/
 
 // Middleware to read cookies from the request header
 app.use(cookieParser());
@@ -119,7 +95,7 @@ app.use((req, res, next) => {
 // Middleware for error handling if any of the route logic throws error or exception
 // Imp: This middleware should be last among all the middlewares
 app.use((error, req, res, next) => {
-  const { statusCode = 500, message = 'Internal server error' } = error;
+  const { statusCode = 500, message = constants.INTERNAL_SERVER_ERROR } = error;
   handleError({ statusCode, message }, res);
   next();
 });
@@ -154,4 +130,4 @@ app.on('error', (error) => {
   }
 });
 
-module.exports = app;
+export default app;

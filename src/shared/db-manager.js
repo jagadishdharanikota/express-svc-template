@@ -1,6 +1,7 @@
 import { MongoClient } from 'mongodb';
 import promise from 'promise';
 import logger from './logger.js';
+import keys from '../keys.js';
 
 class DBManager {
   constructor() {
@@ -9,7 +10,7 @@ class DBManager {
   }
 
   async connect() {
-    const { MONGODB_URI, MONGODB_USERNAME, MONGODB_PASSWORD } = process.env;
+    const { MONGODB_URI, MONGODB_USERNAME, MONGODB_PASSWORD } = keys;
 
     if (MONGODB_URI && MONGODB_USERNAME && MONGODB_PASSWORD) {
       const connect = MongoClient.connect(MONGODB_URI, {

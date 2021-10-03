@@ -20,8 +20,8 @@
     "eslint-all": "eslint ./src/**/**.js --max-warnings 5",
     "format": "prettier-eslint --eslint-config-path ./.eslintrc.js --write '**/*.js'",
     "prettier-all": "prettier --write .",
-    "eslint-ci": "eslint $(git diff --name-only --diff-filter=ACMRTUXB main | grep -E \"(.js$| .mjs$| .cjs$| .jsx$ |.ts$|.tsx$)\") --max-warnings=5",
-    "prettier-ci": "prettier --check $(git diff --name-only --diff-filter=ACMRTUXB main | egrep '.js$|.mjs$|.cjs$|.jsx$|.ts$|.tsx$|.css$|.scss$|.json$|.md$')",
+    "eslint-ci": "eslint $(git diff --name-only --diff-filter=ACMRTUXB HEAD | grep -E \"(.js$| .mjs$| .cjs$| .jsx$ |.ts$|.tsx$)\") --max-warnings=5",
+    "prettier-ci": "prettier --check $(git diff --name-only --diff-filter=ACMRTUXB HEAD | egrep '.js$|.mjs$|.cjs$|.jsx$|.ts$|.tsx$|.css$|.scss$|.json$|.md$')",
     "prepare": "husky install"
   },
   "author": "Jagadish Dharanikota",

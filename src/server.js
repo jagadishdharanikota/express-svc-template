@@ -18,8 +18,9 @@ import requestLogger from './shared/request-logger.js';
 import { CustomError, handleError } from './helpers/error.js';
 import processEventsHandler from './helpers/process-events-handler.js';
 import routes from './routes/index.js';
+import keys from './keys.js';
 
-const PORT = process.env.PORT || 8000;
+const { NODE_ENV, PORT } = keys;
 const app = express();
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -100,13 +101,14 @@ app.use((error, req, res, next) => {
   next();
 });
 
-if (process.env.NODE_ENV !== 'test') {
+if (NODE_ENV !== 'test') {
   /* Wrapping listening on port if condition !test is met (for unit testing).
      See this link for more info - https://blog.campvanilla.com/jest-expressjs-and-the-eaddrinuse-error-bac39356c33a
   */
-  app.listen(PORT, () => {
+  app.listen(PORT || 8000, () => {
+    const port = PORT || 8000;
     logger.info(
-      `Service is listening on port: ${PORT}. Service is accessible on http://localhost:${PORT}/`
+      `Service is listening on port: ${port}. Service is accessible on http://localhost:${port}/`
     );
 
     // Reference: https://pm2.keymetrics.io/docs/usage/signals-clean-restart/

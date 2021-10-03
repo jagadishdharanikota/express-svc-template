@@ -1,2 +1,6 @@
 **/node_modules
 coverage
+LICENSE
+package-lock.json
+.husky
+.npm-rc
